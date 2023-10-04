@@ -3,20 +3,20 @@ const profesores = [
   {
     id: 1,
     nombre: 'Álvaro Esteban Aliaga Cerón',
-    correo: 'alvceali@utem.cl',
-    imagen: '',
+    correo: 'alvceali@uchile.cl',
+    imagen: 'alvceali.jpg',
   },
   {
     id: 2,
-    nombre: 'María Fernanda González Rojas',
-    correo: 'mfgonzal@utem.cl',
-    imagen: '',
+    nombre: 'Carlos Alberto Areche Medina',
+    correo: 'areche@uchile.cl',
+    imagen: 'areche.jpg',
   },
   {
     id: 3,
-    nombre: 'José Luis Torres Ramírez',
-    correo: 'jlramirez@utem.cl',
-    imagen: 'images/jlramirez.jpg',
+    nombre: 'Bruce Kennedy Cassels Niven',
+    correo: 'bcassels@uchile.cl',
+    imagen: 'bcassels.jpg',
   },
   {
     id: 4,

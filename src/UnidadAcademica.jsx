@@ -7,9 +7,11 @@ import ProfesoresList from './ProfesoresList';
 function UnidadAcademica() {
   const [selectedUnit, setSelectedUnit] = useState('todas');
   const [selectedDepartment, setSelectedDepartment] = useState('todas');
+  const [selectedUnitLabel, setSelectedUnitLabel] = useState('');
 
-  const handleUnitChange = (value) => {
+  const handleUnitChange = (value, label) => {
     setSelectedUnit(value);
+    setSelectedUnitLabel(label);
     setSelectedDepartment('todas'); // Reiniciar el departamento al cambiar la unidad académica
   };
 
@@ -35,7 +37,9 @@ function UnidadAcademica() {
 
       {/* Renderizar ProfesoresList solo si se ha seleccionado una unidad y un departamento */}
       {selectedUnit !== 'todas' && selectedDepartment !== 'todas' && (
-        <ProfesoresList selectedUnit={selectedUnit} selectedDepartment={selectedDepartment} />
+        <div>
+          <ProfesoresList nameUnit = {selectedUnitLabel} selectedUnit={selectedUnit} selectedDepartment={selectedDepartment} />
+        </div>
       )}
     </div>
   );

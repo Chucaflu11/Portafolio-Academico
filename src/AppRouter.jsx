@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Routes, Navigate } from 'react-ro
 import PortafolioAcademico from './PortafolioAcademico';
 import UnidadAcademica from './UnidadAcademica';
 import ProyectosInvestigacion from './ProyectosInvestigacion';
+import ProfesorDetalle from './ProfesorDetalle';
 
 function AppRouter() {
   return (
@@ -28,6 +29,10 @@ function AppRouter() {
           <Route path="/portafolio-academico" element={<PortafolioAcademico />} />
           <Route path="/unidad-academica" element={<UnidadAcademica />} />
           <Route path="/proyectos-investigacion" element={<ProyectosInvestigacion />} />
+          <Route
+  path="/profes/:id"
+  element={<ProfesorDetalle />}
+/>
         </Routes>
       </div>
     </Router>

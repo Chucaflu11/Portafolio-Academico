@@ -1,0 +1,38 @@
+.profesor-card{
+    display: flex;
+    flex-direction: row;
+    border-radius: 1em;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    align-items: center;
+    gap: 1rem;
+    height: 8em;
+}
+
+.profesor-card a{
+    text-decoration: none;
+}
+.profesor-card img{
+    height: 80%;
+    aspect-ratio: 12/16;
+    object-fit: cover;
+    border-radius: 1em;
+    margin: 1rem;
+}
+
+.profesores-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    align-items: center;
+}
+
+.data-profile{
+    font-size: 100%;
+}
+
+/* media query para debajo de 768 */
+@media (max-width: 768px) {
+    .profesores-list{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

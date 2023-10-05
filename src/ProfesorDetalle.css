@@ -1,0 +1,146 @@
+.div{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1em;
+    box-shadow: 0 3px 6px #00000029;
+    border: 0.5px solid #d2d3d5;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.main{
+    min-height: 600;
+}
+.resume{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    height: 100%;
+}
+
+.resume img{
+    max-width: 140px;
+    max-height: 186px;
+}
+.resume .text{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.text .contacts{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    color: #3598db;
+    font-weight: 600;
+}
+
+.contacts a{
+    text-decoration: none;
+    color: #3598db;
+}
+
+.text h1{
+    color: #234569;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    gap: 0.2em;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.buttons button{
+    display: block;
+    height: 40px;
+    text-align: center;
+    padding: 1em 1em 2em 1em;
+    background: #d2e1ef;
+    border: none;
+    font-size: 80%;
+    cursor: pointer;
+}
+
+.buttons button.seleccionado{
+    background: #234569;
+    color: #fff;
+}
+
+.contenido-perfil-academico ul{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.breve-cronologia{
+    list-style-type: '\1F393';
+}
+
+.docencia{
+    list-style-type: '\1F4DA';
+}
+
+.coordinacion{
+    list-style-type: '\1F310';
+}
+
+h2{
+    color: #234569;
+}
+
+table.Table {
+    margin-top: 1em;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 120px;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.Table td, table.Table th {
+    padding: 3px 2px;
+  }
+  table.Table tbody td {
+    font-size: 1.2em;
+  }
+  table.Table tr:nth-child(even) {
+    background: #FFF1F1;
+  }
+  table.Table thead {
+    background: #234569;
+  }
+  table.Table thead th {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+  table.Table tfoot {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+  table.Table tfoot td {
+    font-size: 14px;
+  }
+
+  Table.Publicaciones thead th{
+    font-size: 1em;
+  }
+  Table.Publicaciones tbody td{
+    font-size: 1em;
+    vertical-align: top;
+    padding-top: 0.5em;
+  }
+
+  
+  Table.Publicaciones tbody td:nth-child(1.2){
+    width: 100%;
+  }

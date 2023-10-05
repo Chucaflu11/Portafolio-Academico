@@ -4,10 +4,13 @@ import unidadesAcademicas from '../mocks/unidadesAcademicas';
 import departamentosPorUnidadAcademica from '../mocks/departamentosPorUnidadAcademica';
 import ProfesoresList from './ProfesoresList';
 
+import './UnidadAcademica.css';
+
 function UnidadAcademica() {
   const [selectedUnit, setSelectedUnit] = useState('todas');
   const [selectedDepartment, setSelectedDepartment] = useState('todas');
   const [selectedUnitLabel, setSelectedUnitLabel] = useState('');
+  const [searchClicked, setSearchClicked] = useState(false);
 
   const handleUnitChange = (value, label) => {
     setSelectedUnit(value);
@@ -19,26 +22,34 @@ function UnidadAcademica() {
     setSelectedDepartment(value);
   };
 
+  const handleSearchClick = () => {
+    setSearchClicked(true);
+  };
+
   return (
     <div>
-      <Dropdown
-        data={unidadesAcademicas}
-        selectedValue={selectedUnit}
-        onChange={handleUnitChange}
-        label="Unidad académica"
-      />
+      <div className="inputs">
+        <Dropdown
+          data={unidadesAcademicas}
+          selectedValue={selectedUnit}
+          onChange={handleUnitChange}
+          label="Unidad académica"
+        />
 
-      <Dropdown
-        data={departamentosPorUnidadAcademica[selectedUnit]}
-        selectedValue={selectedDepartment}
-        onChange={handleDepartmentChange}
-        label="Departamento"
-      />
+        <Dropdown
+          data={departamentosPorUnidadAcademica[selectedUnit]}
+          selectedValue={selectedDepartment}
+          onChange={handleDepartmentChange}
+          label="Departamento o escuela"
+        />
+
+        <button className='search-btn' onClick={handleSearchClick}>Buscar</button>
+      </div>
 
       {/* Renderizar ProfesoresList solo si se ha seleccionado una unidad y un departamento */}
-      {selectedUnit !== 'todas' && selectedDepartment !== 'todas' && (
+      {searchClicked && selectedUnit !== 'todas' && selectedDepartment !== 'todas' && (
         <div>
-          <ProfesoresList nameUnit = {selectedUnitLabel} selectedUnit={selectedUnit} selectedDepartment={selectedDepartment} />
+          <ProfesoresList nameUnit={selectedUnitLabel} selectedUnit={selectedUnit} selectedDepartment={selectedDepartment} />
         </div>
       )}
     </div>

@@ -5,6 +5,7 @@ const profesoresDetalle = [
             "nombre": "Álvaro Esteban Aliaga Cerón",
             "anexo": 87204,
             "correo": "alvceali@uchile.cl",
+            "imagen": 'alvceali.jpg',
             "categoria": "Prof. Asistente",
             "categoria_academica": "Categoría académica ordinaria",
             "departamento": "Departamento de Química",
@@ -54,19 +55,14 @@ const profesoresDetalle = [
               ],
               "estudios": [
                 {
-                  "titulo": "Químico Ambiental",
+                  "grado": "Doctor",
                   "institucion": "Universidad de Chile",
-                  "año_obtencion": 2005
+                  "fecha": "02-12-2011"
                 },
                 {
-                  "titulo": "Doctor en Química",
+                  "grado": "Químico Ambiental",
                   "institucion": "Universidad de Chile",
-                  "año_obtencion": 2010
-                },
-                {
-                  "titulo": "Licenciado en Ciencias Ambientales c/m Química",
-                  "institucion": "Universidad de Chile",
-                  "año_obtencion": 2010
+                  "fecha": "15-09-2006"	
                 }
               ],
               "experiencia_laboral": [
@@ -86,21 +82,55 @@ const profesoresDetalle = [
             },
             "publicaciones": [
               {
-                "titulo": "Detección de contaminantes ambientales",
-                "revista": "Environmental Science and Technology",
-                "año": 2012
+                "Autores": "Donoso-Gonzalez, O; Lodeiro, L; Aliaga",
+                "Título publicación": "Functionalization of Gold Nanostars with Cationic beta-Cyclodextrin-Based Polymer for Drug Co-Loading and SERS Monitoring",
+                "Año": 2021,
+                "Título revista": "PHARMACEUTICS",
+                "Tipo publicación": "ISI/SCOPUS/UCH/VID",
+                "Digital object identifier": "http://dx.doi.org/10.3390/pharmaceutics13020261"
               },
               {
-                "titulo": "Interacción de antioxidantes/colorantes con sistemas fosfolipídicos",
-                "revista": "Journal of Physical Chemistry B",
-                "año": 2014
+                "Autores": "Celis, F; Tirapegui, C; Garcia, M; Arace",
+                "Título publicación": "IDENTIFICATION OF COEXISTING INDIGO SPECIES IN AN ANCIENT GREEN THREAD USING DIRECT PLASMON-ENHANCED RAMAN SPECTROSCOPY",
+                "Año": 2020,
+                "Título revista": "JOURNAL OF THE CHILEAN CHEMICAL SOCIETY",
+                "Tipo publicación": "ISI/SCOPUS/SCIELO-Chile/UCH/VID",
+                "Digital object identifier": "http://dx.doi.org/10.4067/S0717-97072020000204798"
               },
               {
-                "titulo": "Colorantes en textiles prehispánicos",
-                "revista": "Journal of Cultural Heritage",
-                "año": 2016
+                "Autores": "Campos-Vallette, MM; Rodriguez, MJ; Chap",
+                "Título publicación": "SERS spectrum of red dyes in the Mapuche belts from the beginning of the XXth century",
+                "Año": 2017,
+                "Título revista": "JOURNAL OF RAMAN SPECTROSCOPY",
+                "Tipo publicación": "ISI/SCOPUS/UCH/VID",
+                "Digital object identifier": "http://dx.doi.org/10.1002/jrs.5147"
+              },
+              {
+                "Autores": "Gonzalez-Henriquez, CM; Terraza, CA; Sar",
+                "Título publicación": "Structure correlation of silylated dicarboxylic acid monomer and its respective oligomeric polyamide-imide using experimental and theoretical vibrational spectra",
+                "Año": 2017,
+                "Título revista": "SPECTROSCOPY LETTERS",
+                "Tipo publicación": "ISI/SCOPUS/UCH/VID",
+                "Digital object identifier": "http://dx.doi.org/10.1080/00387010.2017.1282523"
+              },
+              {
+                "Autores": "Aliaga, AE; Leyton, P; Clavijo, RE; Camp",
+                "Título publicación": "Fluorescence and surface-enhanced vibrational spectroscopies of lawsone and plumbagin",
+                "Año": 2016,
+                "Título revista": "SPECTROSCOPY LETTERS",
+                "Tipo publicación": "SCOPUS/ISI/UCH/VID",
+                "Digital object identifier": "http://dx.doi.org/10.1080/00387010.2016.1146772"
+              },
+              {
+                "Autores": "Vera, AM; Carcamo, JJ; Aliaga, AE; Gomez",
+                "Título publicación": "Interaction of the CLPFFD peptide with gold nanospheres. A Raman, surface enhanced Raman scattering and theoretical study",
+                "Año": 2015,
+                "Título revista": "SPECTROCHIMICA ACTA PART A-MOLECULAR AND BIOMOLECULAR SPECTROSCOPY",
+                "Tipo publicación": "ISI/SCOPUS/UCH/VID",
+                "Digital object identifier": "http://dx.doi.org/10.1016/j.saa.2014.06.116"
               }
-            ],
+            ]
+            ,
             "proyectos_investigacion": [
               {
                 "titulo": "Caracterización de péptidos y proteínas",

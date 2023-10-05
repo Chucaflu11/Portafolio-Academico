@@ -1,0 +1,14 @@
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.input label{
+    color: #34495e;
+}
+
+.input select{
+    border-radius: 0.5em;
+    width: 24em;
+    padding: 0.5em;
+}

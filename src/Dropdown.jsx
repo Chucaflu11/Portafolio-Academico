@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Dropdown.css';
+
 function Dropdown({ data, selectedValue, onChange, label }) {
   // Buscar el objeto correspondiente al valor seleccionado
   const selectedItem = data.find((item) => item.value === selectedValue);
@@ -13,8 +15,8 @@ function Dropdown({ data, selectedValue, onChange, label }) {
   };
 
   return (
-    <div>
-      <label htmlFor="dropdown">{label}:</label>
+    <div className='input'>
+      <label htmlFor="dropdown">{label}</label>
       <select
         name="dropdown"
         id="dropdown"

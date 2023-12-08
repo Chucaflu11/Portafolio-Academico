@@ -7,24 +7,35 @@
 
 .header{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    background-color: #551f1f30;
+    background: linear-gradient(90deg, #298164, #2dc887);
     display: flex;
-    flex-direction: row;
     gap: 1rem;
     height: 3em;
     padding: 1em;
     align-items: center;
-    padding-left: 24em;
 }
 
 .header img{
     height: 100%;
-   object-fit: cover;
+    object-fit: cover;
 }
 
 .vertical-line{
-    border-left: 1px solid #17080830;
+    border-left: 1px solid white;
     height: 100%;
+    margin-right: 1rem;
+}
+
+.header h1{
+    margin: 0;
+    color: white;
+}
+
+nav {
+    background-color: #ddd;
+    border-radius: 48px;
+    margin-top: 10px;
+    padding: 1em;
 }
 
 nav ul {
@@ -32,11 +43,8 @@ nav ul {
     flex-direction: row;
     gap: 1rem;
     list-style: none;
-    background-color: white;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 0;
-    padding: 0.5em;
-    padding-left: 24em;
+    padding: 0;
     z-index: 2;
     position: relative;
     
@@ -44,20 +52,43 @@ nav ul {
 
 nav li {
     text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    flex: 1;
     
 }
 
-.text-link{
+.text-link {
     text-decoration: none;
-    color: gray;
+    color: #333;
     font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    display: block; /* Convertir en bloque en línea para que el ::before respete el ancho del texto */
+    padding: 1em; /* Añade relleno para que los elementos li tengan altura */
+    text-align: center; /* Centra el texto horizontalmente */
+    position: relative;
 }
 
-.text-link:hover{
-    color: black;
-    text-decoration: underline;
+.text-link::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -8px;
+    right: -8px;
+    border-radius: 48px;
+    background: linear-gradient(90deg, #298164, #2dc887);
+    z-index: -1; /* Poner el rectángulo detrás del texto */
+    opacity: 0; /* Inicialmente transparente */
+    transition: opacity 0.3s ease-in-out;
 }
-.text-link.selected {
-    color: darkgray;
-    text-decoration: underline;
-  }
+
+.text-link:hover::before {
+    opacity: 1; /* Hacer el rectángulo visible en hover */
+}
+
+.text-link:hover {
+    color: #555;
+    z-index: 1; /* Asegurar que el texto esté sobre el rectángulo */
+}

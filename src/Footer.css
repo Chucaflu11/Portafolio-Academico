@@ -3,7 +3,7 @@
     bottom: 0;
     width: 100%;
     height: 120px;
-    background: #34495e 0 0 no-repeat padding-box;
+    background: linear-gradient(90deg, #298164, #2dc887) 0 0 no-repeat padding-box;
     color: #ddd;
     display: flex;
     flex-direction: column;

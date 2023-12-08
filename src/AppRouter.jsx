@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes, Navigate } from 'react-router-dom';
 
-import PortafolioAcademico from './PortafolioAcademico';
+import Nombre from './Nombre';
 import UnidadAcademica from './UnidadAcademica';
 import ProyectosInvestigacion from './ProyectosInvestigacion';
 import ProfesorDetalle from './ProfesorDetalle';
@@ -9,7 +9,7 @@ import ProfesorDetalle from './ProfesorDetalle';
 import './AppRouter.css';
 
 function AppRouter() {
-  const [selectedLink, setSelectedLink] = useState('/portafolio-academico');
+  const [selectedLink, setSelectedLink] = useState('/Nombre');
 
   const handleLinkClick = (to) => {
     setSelectedLink(to);
@@ -27,11 +27,11 @@ function AppRouter() {
           <ul>
             <li>
               <Link
-                className={`text-link ${selectedLink === '/portafolio-academico' && 'selected'}`}
-                to="/portafolio-academico"
-                onClick={() => handleLinkClick('/portafolio-academico')}
+                className={`text-link ${selectedLink === '/nombre' && 'selected'}`}
+                to="/nombre"
+                onClick={() => handleLinkClick('/nombre')}
               >
-                Portafolio Académico
+                Nombre
               </Link>
             </li>
             <li>
@@ -56,8 +56,8 @@ function AppRouter() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Navigate to="/portafolio-academico" />} />
-          <Route path="/portafolio-academico" element={<PortafolioAcademico />} />
+          <Route path="/" element={<Navigate to="/nombre" />} />
+          <Route path="/nombre" element={<Nombre />} />
           <Route path="/unidad-academica" element={<UnidadAcademica />} />
           <Route path="/proyectos-investigacion" element={<ProyectosInvestigacion />} />
           <Route path="/profes/:id" element={<ProfesorDetalle />} />

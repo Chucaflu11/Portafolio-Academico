@@ -1,0 +1,31 @@
+/* Nombre.css */
+
+/* Estilo para la barra de búsqueda principal (gris) */
+.search-bar {
+    background-color: #dcdcdc; /* Gris */
+    border-radius: 64px; /* Bordes redondeados */
+    margin-top: 16px; /* Márgen superior con el elemento del header */
+    padding: 16px; /* Espaciado interno */
+    display: flex;
+    align-items: center;
+  }
+  
+/* Estilo para la barra de búsqueda blanca dentro de la principal */
+.search-input-container {
+    background-color: white; /* Blanco */
+    border-radius: 64px; /* Bordes redondeados */
+    flex: 1
+}
+  
+  /* Estilo para el input de búsqueda */
+.search-input {
+   border: none; /* Eliminar bordes del input */
+   outline: none; /* Eliminar borde de enfoque */
+   width: 95%;
+   margin-left: 8px; /* Márgen a la izquierda del input */
+   font-size: 16px; /* Tamaño de fuente */
+   border-radius: 64px;
+
+}
+  
+  

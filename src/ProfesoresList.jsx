@@ -9,11 +9,6 @@ function ProfesoresList({ nameUnit, selectedUnit, selectedDepartment }) {
 	const [filteredProfesores, setFilteredProfesores] = useState([]);
 	const [selectedLetter, setSelectedLetter] = useState(null);
 
-
-
-
-
-
 	function puedeFiltrar(letra) {
 
 

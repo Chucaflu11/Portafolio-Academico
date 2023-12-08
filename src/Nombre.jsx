@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import profesores from '../mocks/profesores'; // Ajusta la ruta según la ubicación real del archivo de mocks
 import './Nombre.css';
 
@@ -38,6 +39,9 @@ function Nombre() {
           <div key={profesor.id} className="profesor-card">
             <img src={`./../mocks/images/${profesor.imagen}`} alt={profesor.nombre} />
             <div className='data-profile'>
+              <span> Nombre: </span>
+              {profesor.nombre}
+              <br />
               <a href={`mailto:${profesor.correo}`}>{profesor.correo}</a>
               <br />
               <span> Repartición: </span>

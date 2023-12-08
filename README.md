@@ -1,17 +1,37 @@
-## Running React on Repl.it
+# Portafolio Académico de Profesores
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
+Este proyecto es un portafolio académico diseñado para mostrar la información de investigación de los profesores de un departamento universitario, enfocándose en el área de informática. Cabe destacar que este proyecto es puramente académico y los nombres de los profesores utilizados como ejemplo son completamente ficticios.
 
-[Vite](https://vitejs.dev/) is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
+## Descripción del Proyecto
 
-Using the two in conjunction is one of the fastest ways to build a web app.
+El Portafolio Académico de Profesores es una aplicación web que proporciona a los visitantes la posibilidad de explorar la información de los profesores, incluyendo datos básicos y detalles relacionados con su investigación, como publicaciones, proyectos y líneas de investigación.
 
-### Getting Started
-- Hit run
-- Edit [App.jsx](#src/App.jsx) and watch it live update!
+## Características Principales
 
-By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the [configuration file](#.replit). Here are the vite docs for [serving production websites](https://vitejs.dev/guide/build.html)
+- **Exploración de Profesores:** Lista de profesores del departamento de informática con detalles básicos.
+- **Detalles del Profesor:** Información detallada de cada profesor, incluyendo datos personales y académicos.
+- **Investigaciones:** Exploración de publicaciones, proyectos y líneas de investigación de cada profesor.
+- **Búsqueda:** Funcionalidad para buscar profesores por nombre o departamento.
 
-### Typescript
+## Configuración del Proyecto
 
-Just rename any file from `.jsx` to `.tsx`. You can also try our [TypeScript Template](https://replit.com/@replit/React-TypeScript)
+### Requisitos Previos
+
+Asegúrate de tener instalados los siguientes requisitos antes de ejecutar la aplicación:
+
+- Node.js
+- Gestor de paquetes npm
+- ReactJS
+
+### Instalación
+
+1. Clona este repositorio: `git clone https://github.com/Chucaflu11/Portafolio-Academico`
+2. Navega al directorio del proyecto: `cd proyecto-portafolio`
+3. Instala las dependencias: `npm install`
+4. Configura la base de datos según sea necesario.
+5. Ejecuta la aplicación: `npm start`
+
+## Notas Importantes
+
+Este proyecto es una iniciativa académica y todos los datos de los profesores utilizados como ejemplo son completamente ficticios. La aplicación ha sido desarrollada con fines educativos y de práctica.
+

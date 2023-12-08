@@ -34,22 +34,26 @@ function Nombre() {
         </div>
       </div>
 
-      <div className="profesores-list">
-        {profesoresList.map((profesor) => (
-          <div key={profesor.id} className="profesor-card">
-            <img src={`./../mocks/images/${profesor.imagen}`} alt={profesor.nombre} />
-            <div className='data-profile'>
-              <span> Nombre: </span>
-              {profesor.nombre}
-              <br />
-              <a href={`mailto:${profesor.correo}`}>{profesor.correo}</a>
-              <br />
-              <span> Repartición: </span>
-              {profesor.reparticion}
+      {profesoresList.length > 0 && (
+        <div className="profesores-list">
+          {profesoresList.map((profesor) => (
+            <div key={profesor.id} className="profesor-card">
+              <img src={`./../mocks/images/${profesor.imagen}`} alt={profesor.nombre} />
+              <div className='data-profile'>
+                <span> Nombre: </span>
+                <Link to={`/profes/${profesor.id}`}>{profesor.nombre}</Link>
+                <br />
+                <a href={`mailto:${profesor.correo}`}>{profesor.correo}</a>
+                <br />
+                <span> Repartición: </span>
+                {profesor.reparticion}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+
+
     </div>
   );
 }

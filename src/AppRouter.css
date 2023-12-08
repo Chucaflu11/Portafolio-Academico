@@ -89,6 +89,6 @@ nav li {
 }
 
 .text-link:hover {
-    color: #555;
+    color: white;
     z-index: 1; /* Asegurar que el texto esté sobre el rectángulo */
 }

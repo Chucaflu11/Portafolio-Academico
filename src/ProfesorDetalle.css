@@ -33,17 +33,17 @@
     display: flex;
     flex-direction: row;
     gap: 2em;
-    color: #3598db;
+    color: #298164;
     font-weight: 600;
 }
 
 .contacts a{
     text-decoration: none;
-    color: #3598db;
+    color: #129b6e;
 }
 
 .text h1{
-    color: #234569;
+    color: #2c8768;
 }
 
 .buttons{
@@ -62,12 +62,13 @@
     padding: 1em 1em 2em 1em;
     background: #d2e1ef;
     border: none;
+    border-radius: 32px;
     font-size: 80%;
     cursor: pointer;
 }
 
 .buttons button.seleccionado{
-    background: #234569;
+    background: linear-gradient(90deg, #298164, #2dc887);
     color: #fff;
 }
 
@@ -94,7 +95,7 @@
 }
 
 h2{
-    color: #234569;
+    color: #2c8768;
 }
 
 table.Table {
@@ -115,7 +116,7 @@ table.Table {
     background: #FFF1F1;
   }
   table.Table thead {
-    background: #234569;
+    background: #2c8768;
   }
   table.Table thead th {
     font-size: 1.3em;

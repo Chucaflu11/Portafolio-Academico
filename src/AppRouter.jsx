@@ -19,7 +19,7 @@ function AppRouter() {
     <Router>
       <div>
         <div className="header">
-          <img src='/src/logo.png' alt="Logo UTEM" />
+          <img src='/src/logo.svg' alt="Logo UTEM" />
           <div className="vertical-line"></div>
           <h1>Portafolio Académico</h1>
         </div>

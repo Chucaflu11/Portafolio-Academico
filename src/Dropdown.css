@@ -1,14 +1,36 @@
-.input{
+/* Estilos comunes para el diseño */
+.input {
     display: flex;
-    flex-direction: column;
-}
-
-.input label{
-    color: #34495e;
-}
-
-.input select{
+    align-items: center;
+    margin-right: 16px; /* Espaciado entre dropdowns */
+  }
+  
+  .input label {
+    color: #000000;
+    font-style: bold;
+    margin-right: 8px;
+  }
+  
+  .input select {
     border-radius: 0.5em;
     width: 24em;
     padding: 0.5em;
-}
+  }
+  
+  /* Estilos para pantallas más pequeñas */
+  @media only screen and (max-width: 768px) {
+    .input {
+      flex-direction: column; /* Cambia a diseño de columna en pantallas más pequeñas */
+      margin-bottom: 16px; /* Añade un margen inferior entre los dropdowns en diseño de columna */
+    }
+  
+    .input label {
+      margin-bottom: 8px; /* Ajusta el margen inferior entre la etiqueta y la lista desplegable */
+      margin-right: 0; /* Elimina el margen derecho */
+    }
+  
+    .input select {
+      width: 100%; /* Hace que la lista desplegable ocupe el ancho completo */
+    }
+  }
+  

@@ -4,27 +4,21 @@
     gap: 1em;
     justify-content: center;
     padding: 1em;
-    background: white;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    width: 80%;
-    margin: 0 auto;
+    background: #dcdcdc;
+    flex: 1;
     position: relative;
     z-index: 1;
-    height: 4rem;
-    border-radius: 0 0 1em 1em;
-    align-items: center;
+    margin-top: 16px;
+    border-radius: 64px;
     margin-bottom: 1em;
 }
 
 .search-btn{
     cursor: pointer;
     border-style: none;
-    background: #2c3d5f;
-    border-color: #2c3d5f;
+    background: linear-gradient(90deg, #298164, #2dc887);
     color: white;
     border-radius: 1em;
-    padding: 0.5em;
-    margin-top: 1em;
     width: 7em;
     text-transform: uppercase;
     font-weight: bold;

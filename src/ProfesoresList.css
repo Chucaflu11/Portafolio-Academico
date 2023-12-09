@@ -58,7 +58,7 @@
     gap: 1em;
 }
 .results h2{
-    color: #234569;
+    color: #298164;
 }
 
 .results p{
@@ -80,7 +80,7 @@
 .letra-activo{
     cursor: pointer;
     color: white;
-    background: #234569 0 0 no-repeat padding-box;
+    background: #2dc887 0 0 no-repeat padding-box;
 }
 
 .letra-inactivo{

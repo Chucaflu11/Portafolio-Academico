@@ -72,13 +72,6 @@ function ProfesorDetalle() {
       </div>
     );
 
-  const Docencia = () => (
-      <div className="contenido-docencia">
-        {/* Contenido para 'Docencia' */}
-        <p>Información específica de Docencia</p>
-      </div>
-    );
-
     const Publicaciones = () => (
       <div className="contenido-publicaciones">
         {/* Contenido para 'Publicaciones' */}
@@ -111,21 +104,6 @@ function ProfesorDetalle() {
         </table>
       </div>
     );
-    
-
-  const ProyectosDeInvestigacion = () => (
-      <div className="contenido-proyectos-de-investigacion">
-        {/* Contenido para 'Proyectos de Investigación' */}
-        <p>Información específica de Proyectos de Investigación</p>
-      </div>
-    );
-
-  const MemoriasDeTesis = () => (
-      <div className="contenido-memorias-de-tesis">
-        {/* Contenido para 'Memorias de Tesis' */}
-        <p>Información específica de Memorias de Tesis</p>
-      </div>
-    );
 
 
 
@@ -143,9 +121,9 @@ function ProfesorDetalle() {
               </div>
               <div className="otros-detalles">
                 <p aria-label='Categoria'>{profesor.categoria}</p>
-                <p aria-label='Departamento'> {profesor.departamento}</p>
-                <p aria-label='Facultad'> {profesor.facultad}</p>
-                <p aria-label='Jornada'> {profesor.jornada}</p>
+                <p aria-label='Departamento'>Departamento de {profesor.departamento}</p>
+                <p aria-label='Facultad'>Facultad de {profesor.facultad}</p>
+                <p aria-label='Linea de investigación'>Linea de investigación: {profesor.linea_investigacion}</p>
               </div>
             </div>
            </div>
@@ -163,28 +141,10 @@ function ProfesorDetalle() {
                 Información Personal
               </button>
               <button
-                className={botonSeleccionado === 'Docencia' ? 'seleccionado' : ''}
-                onClick={() => handleButtonClick('Docencia')}
-              >
-                Docencia
-              </button>
-              <button
                 className={botonSeleccionado === 'Publicaciones' ? 'seleccionado' : ''}
                 onClick={() => handleButtonClick('Publicaciones')}
               >
                 Publicaciones
-              </button>
-              <button
-                className={botonSeleccionado === 'Proyectos de Investigación' ? 'seleccionado' : ''}
-                onClick={() => handleButtonClick('Proyectos de Investigación')}
-              >
-                Proyectos de Investigación
-              </button>
-              <button
-                className={botonSeleccionado === 'Memorias de Tesis' ? 'seleccionado' : ''}
-                onClick={() => handleButtonClick('Memorias de Tesis')}
-              >
-                Memorias de Tesis
               </button>
             </div>
         </div>
@@ -192,10 +152,7 @@ function ProfesorDetalle() {
 
           {botonSeleccionado === 'Perfil Académico' && <PerfilAcademico />}
           {botonSeleccionado === 'Información Personal' && <InformacionPersonal />}
-          {botonSeleccionado === 'Docencia' && <Docencia />}
           {botonSeleccionado === 'Publicaciones' && <Publicaciones />}
-          {botonSeleccionado === 'Proyectos de Investigación' && <ProyectosDeInvestigacion />}
-          {botonSeleccionado === 'Memorias de Tesis' && <MemoriasDeTesis />}
         </div>
         </section>
       );

@@ -1,0 +1,16 @@
+.inputs{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+}
+
+.search-btn{
+    cursor: pointer;
+    border-style: none;
+    background: linear-gradient(90deg, #298164, #2dc887);
+    color: white;
+    border-radius: 1em;
+    width: 7em;
+    text-transform: uppercase;
+    font-weight: bold;
+}

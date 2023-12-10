@@ -1,68 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import ProfesoresList from './ProfesoresList';
+import Dropdown from './Dropdown';
 
-import './ProfesoresList.css';
+import './ProyectosInvestigacion.css';
 
-function ProfesoresList({ selectedUnit, selectedDepartment }) {
+function ProyectosInvestigacion() {
+  const [lineasInvestigacion, setLineasInvestigacion] = useState([]);
   const [profesores, setProfesores] = useState([]);
-  const [filteredProfesores, setFilteredProfesores] = useState([]);
-  const [selectedLetter, setSelectedLetter] = useState(null);
+  const [selectedLinea, setSelectedLinea] = useState('');
+  const [searchClicked, setSearchClicked] = useState(false);
 
   useEffect(() => {
-    // Hacer la petición para obtener la lista completa de profesores
+    // Obtener líneas de investigación desde el backend
+    fetch('http://localhost:3000/api/linea-investigacion')
+      .then(response => response.json())
+      .then(data => setLineasInvestigacion(data))
+      .catch(error => console.error('Error fetching lineasInvestigacion:', error));
+
+    // Obtener información de profesores desde el backend
     fetch('http://localhost:3000/api/profesores')
       .then(response => response.json())
-      .then(data => {
-        setProfesores(data);
-      })
-      .catch(error => console.error('Error:', error));
+      .then(data => setProfesores(data))
+      .catch(error => console.error('Error fetching profesores:', error));
   }, []);
 
-  useEffect(() => {
-    // Filtrar los profesores según la unidad académica y el departamento seleccionados
-    if (selectedUnit === 'todas' || selectedDepartment === 'todas') {
-      setFilteredProfesores(profesores);
-    } else {
-      const filtered = profesores.filter((profesor) =>
-        profesor.facultad === selectedUnit && profesor.departamento === selectedDepartment
-      );
-      setFilteredProfesores(filtered);
-    }
-  }, [selectedUnit, selectedDepartment, profesores]);
+  const handleLineaChange = (selectedOption) => {
+    setSelectedLinea(selectedOption);
+    setSearchClicked(false); // Reiniciar búsqueda al cambiar la selección
+  };
 
-  // Resto del código para el manejo de letras, etc.
+  const handleSearchClick = () => {
+    setSearchClicked(true);
+  };
 
   return (
     <div>
-      {/* Contenido del componente, igual al código anterior */}
-      <div className="results">
-        <h2> Resultados de búsqueda</h2>
-        <p>Su búsqueda de académicos arrojó {filteredProfesores.length} resultados organizados alfabéticamente por apellido</p>
+      <div className="inputs">
+        <Dropdown
+          data={lineasInvestigacion}
+          selectedValue={selectedLinea}
+          onChange={handleLineaChange}
+          label="Linea de investigación"
+        />
 
-        {/* Resto del código para las letras, etc. */}
+        <button className='search-btn' onClick={handleSearchClick}>Buscar</button>
+      </div>
 
-      </div>
-      <div className="profesores-list">
-        {filteredProfesores.map((profesor) => (
-          <div key={profesor.id_profesor} className="profesor-card">
-            {/* Ajustar la ruta de la imagen según la estructura de tu servidor */}
-            <img src={profesor.imagen} alt={profesor.nombre_profesor} />
-            <div className='data-profile'>
-              <Link to={`/profes/${profesor.id_profesor}`}>
-                {profesor.nombre_profesor}
-              </Link>
-              <br />
-              <span> Correo: </span>
-              <a href={`mailto:${profesor.correo}`}>{profesor.correo}</a>
-              <br />
-              <span> Repartición: </span>
-              {profesor.facultad}
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Renderizar ProfesoresList solo si se ha seleccionado una unidad y un departamento */}
+      {searchClicked && selectedLinea !== 'todas' && (
+        <div>
+          <ProfesoresList linea_investigacion = {selectedLinea} />
+       </div>
+      )}
+
     </div>
   );
 }
 
-export default ProfesoresList;
+export default ProyectosInvestigacion;

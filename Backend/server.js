@@ -204,6 +204,22 @@ app.get('/api/profesores/:id', (req, res) => {
   });
 });
 
+// Ruta para obtener la lista de líneas de investigación
+app.get('/api/linea-investigacion', (req, res) => {
+  const sql = 'SELECT DISTINCT linea_investigacion FROM Profesor WHERE linea_investigacion IS NOT NULL';
+
+  connection.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+
+    const lineasInvestigacion = results.map(result => result.linea_investigacion);
+    res.json(lineasInvestigacion);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './ProfesoresList.css';
 
-function ProfesoresList({ selectedUnit, selectedDepartment }) {
+function ProfesoresList({ selectedUnit, selectedDepartment, searchName, searchLineaInvestigacion }) {
   const [profesores, setProfesores] = useState([]);
   const [filteredProfesores, setFilteredProfesores] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState(null);
@@ -20,15 +20,28 @@ function ProfesoresList({ selectedUnit, selectedDepartment }) {
 
   useEffect(() => {
     // Filtrar los profesores según la unidad académica y el departamento seleccionados
-    if (selectedUnit === 'todas' || selectedDepartment === 'todas') {
-      setFilteredProfesores(profesores);
-    } else {
-      const filtered = profesores.filter((profesor) =>
-        profesor.facultad === selectedUnit && profesor.departamento === selectedDepartment
-      );
-      setFilteredProfesores(filtered);
+    let filtered = profesores;
+
+    if(selectedUnit && selectedDepartment){
+      if (selectedUnit !== 'todas' && selectedDepartment !== 'todas') {
+        filtered = filtered.filter(
+          (profesor) => profesor.facultad === selectedUnit && profesor.departamento === selectedDepartment
+        );
+      }
     }
-  }, [selectedUnit, selectedDepartment, profesores]);
+
+    // Filtrar por nombre
+    if (searchName) {
+      filtered = filtered.filter((profesor) => profesor.nombre_profesor.toLowerCase().includes(searchName.toLowerCase()));
+    }
+
+    // Filtrar por línea de investigación
+    if (searchLineaInvestigacion) {
+      filtered = filtered.filter((profesor) => profesor.linea_investigacion === searchLineaInvestigacion);
+    }
+
+    setFilteredProfesores(filtered);
+  }, [selectedUnit, selectedDepartment, searchName, searchLineaInvestigacion, profesores]);
 
   // Resto del código para el manejo de letras, etc.
 
@@ -40,7 +53,6 @@ function ProfesoresList({ selectedUnit, selectedDepartment }) {
         <p>Su búsqueda de académicos arrojó {filteredProfesores.length} resultados organizados alfabéticamente por apellido</p>
 
         {/* Resto del código para las letras, etc. */}
-
       </div>
       <div className="profesores-list">
         {filteredProfesores.map((profesor) => (

@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from './Dropdown';
-import unidadesAcademicas from '../mocks/unidadesAcademicas';
-import departamentosPorUnidadAcademica from '../mocks/departamentosPorUnidadAcademica';
 import ProfesoresList from './ProfesoresList';
 
 import './UnidadAcademica.css';
 
 function UnidadAcademica() {
+  const [facultades, setFacultades] = useState([]);
+  const [departamentos, setDepartamentos] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('todas');
   const [selectedDepartment, setSelectedDepartment] = useState('todas');
   const [selectedUnitLabel, setSelectedUnitLabel] = useState('');
   const [searchClicked, setSearchClicked] = useState(false);
+
+  useEffect(() => {
+    // Hacer la petición para obtener las facultades y departamentos
+    fetch('http://localhost:3000/api/facultades-departamentos')
+      .then(response => response.json())
+      .then(data => {
+        setFacultades(data.facultades);
+        setDepartamentos(data.departamentos);
+      })
+      .catch(error => console.error('Error:', error));
+  }, []); // El segundo parámetro [] significa que se ejecutará solo una vez al montar el componente
 
   const handleUnitChange = (value, label) => {
     setSelectedUnit(value);
@@ -29,15 +40,17 @@ function UnidadAcademica() {
   return (
     <div>
       <div className="inputs">
+        {/* Usar las listas obtenidas de la base de datos */}
         <Dropdown
-          data={unidadesAcademicas}
+          data={facultades}
           selectedValue={selectedUnit}
           onChange={handleUnitChange}
           label="Unidad académica"
         />
 
+        {/* Usar las listas obtenidas de la base de datos */}
         <Dropdown
-          data={departamentosPorUnidadAcademica[selectedUnit]}
+          data={departamentos || []}
           selectedValue={selectedDepartment}
           onChange={handleDepartmentChange}
           label="Departamento o escuela"

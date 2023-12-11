@@ -29,7 +29,6 @@ function ProfesoresList({ selectedUnit, selectedDepartment, searchLineaInvestiga
         );
       }
     }
-    console.log(searchLineaInvestigacion)
     if (searchLineaInvestigacion) {
       // Filtrar por línea de investigación si no hay unidad y departamento seleccionados
       filtered = filtered.filter((profesor) => profesor.linea_investigacion === searchLineaInvestigacion);
@@ -54,7 +53,7 @@ function ProfesoresList({ selectedUnit, selectedDepartment, searchLineaInvestiga
         {filteredProfesores.map((profesor) => (
           <div key={profesor.id_profesor} className="profesor-card">
             {/* Ajustar la ruta de la imagen según la estructura de tu servidor */}
-            <img src={`./../mocks/images/${profesor.imagen}`} alt={profesor.nombre_profesor} />
+            <img src={profesor.imagen} alt={profesor.nombre_profesor} />
             <div className='data-profile'>
               <Link to={`/profes/${profesor.id_profesor}`}>
                 {profesor.nombre_profesor}

@@ -8,6 +8,7 @@
     padding: 16px; /* Espaciado interno */
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
   }
   
 /* Estilo para la barra de búsqueda blanca dentro de la principal */

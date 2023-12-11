@@ -5,23 +5,30 @@ import './Nombre.css';
 function Nombre() {
   const [filtroNombre, setFiltroNombre] = useState('');
   const [profesoresList, setProfesoresList] = useState([]);
+  const [filteredProfesores, setFilteredProfesores] = useState([]);
 
   useEffect(() => {
-    // Filtrar la lista de profesores solo si hay un filtro
-    if (filtroNombre.trim() !== '') {
-      // Realizar la solicitud al backend para obtener la lista de profesores
-      fetch(`http://localhost:3000/api/profesores?nombre=${filtroNombre}`, {
-        method: 'GET',
-        mode: 'cors', // Agrega esta línea
+    // Realizar la solicitud al backend para obtener la lista completa de profesores
+    fetch('http://localhost:3000/api/profesores', {
+      method: 'GET',
+      mode: 'cors', // Agrega esta línea
+    })
+      .then(response => response.json())
+      .then(data => {
+        setProfesoresList(data);
+        setFilteredProfesores(data); // Al principio, mostrar todos los profesores
       })
-        .then(response => response.json())
-        .then(data => setProfesoresList(data))
-        .catch(error => console.error('Error fetching profesores:', error));
-    } else {
-      // Si no hay filtro, no mostrar ningún profesor
-      setProfesoresList([]);
-    }
-  }, [filtroNombre]);
+      .catch(error => console.error('Error fetching profesores:', error));
+  }, []);
+
+  useEffect(() => {
+    // Filtrar localmente la lista de profesores en función del filtro
+    const filtroLowerCase = filtroNombre.toLowerCase();
+    const filtered = profesoresList.filter((profesor) =>
+      profesor.nombre_profesor.toLowerCase().includes(filtroLowerCase)
+    );
+    setFilteredProfesores(filtered);
+  }, [filtroNombre, profesoresList]);
 
   return (
     <div>
@@ -37,9 +44,9 @@ function Nombre() {
         </div>
       </div>
 
-      {profesoresList.length > 0 && (
+      {filteredProfesores.length > 0 && (
         <div className="profesores-list">
-          {profesoresList.map((profesor) => (
+          {filteredProfesores.map((profesor) => (
             <div key={profesor.id_profesor} className="profesor-card">
               <img src={profesor.imagen} alt={profesor.nombre_profesor} />
               <div className='data-profile'>
@@ -54,6 +61,11 @@ function Nombre() {
             </div>
           ))}
         </div>
+      )}
+
+      {/* Agrega esta condición */}
+      {filteredProfesores.length === 0 && filtroNombre.trim() !== '' && (
+        <p>No se encontraron profesores con ese nombre.</p>
       )}
     </div>
   );

@@ -46,10 +46,9 @@ function ProyectosInvestigacion() {
         <button className='search-btn' onClick={handleSearchClick}>Buscar</button>
       </div>
 
-      {/* Renderizar ProfesoresList solo si se ha seleccionado una unidad y un departamento */}
       {searchClicked && selectedLinea !== 'todas' && (
         <div>
-          <ProfesoresList linea_investigacion = {selectedLinea} />
+          <ProfesoresList searchLineaInvestigacion = {selectedLinea} />
        </div>
       )}
 

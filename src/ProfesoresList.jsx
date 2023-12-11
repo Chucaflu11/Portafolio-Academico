@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './ProfesoresList.css';
 
-function ProfesoresList({ selectedUnit, selectedDepartment, searchName, searchLineaInvestigacion }) {
+function ProfesoresList({ selectedUnit, selectedDepartment, searchLineaInvestigacion }) {
   const [profesores, setProfesores] = useState([]);
   const [filteredProfesores, setFilteredProfesores] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState(null);
@@ -22,26 +22,22 @@ function ProfesoresList({ selectedUnit, selectedDepartment, searchName, searchLi
     // Filtrar los profesores según la unidad académica y el departamento seleccionados
     let filtered = profesores;
 
-    if(selectedUnit && selectedDepartment){
+    if (selectedUnit && selectedDepartment) {
       if (selectedUnit !== 'todas' && selectedDepartment !== 'todas') {
         filtered = filtered.filter(
           (profesor) => profesor.facultad === selectedUnit && profesor.departamento === selectedDepartment
         );
       }
     }
-
-    // Filtrar por nombre
-    if (searchName) {
-      filtered = filtered.filter((profesor) => profesor.nombre_profesor.toLowerCase().includes(searchName.toLowerCase()));
-    }
-
-    // Filtrar por línea de investigación
+    console.log(searchLineaInvestigacion)
     if (searchLineaInvestigacion) {
+      // Filtrar por línea de investigación si no hay unidad y departamento seleccionados
       filtered = filtered.filter((profesor) => profesor.linea_investigacion === searchLineaInvestigacion);
     }
 
+
     setFilteredProfesores(filtered);
-  }, [selectedUnit, selectedDepartment, searchName, searchLineaInvestigacion, profesores]);
+  }, [selectedUnit, selectedDepartment, searchLineaInvestigacion, profesores]);
 
   // Resto del código para el manejo de letras, etc.
 

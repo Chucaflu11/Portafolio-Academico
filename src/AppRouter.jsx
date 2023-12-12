@@ -5,6 +5,7 @@ import Nombre from './Nombre';
 import UnidadAcademica from './UnidadAcademica';
 import ProyectosInvestigacion from './ProyectosInvestigacion';
 import ProfesorDetalle from './ProfesorDetalle';
+import EditarProfesor from './EditarProfesor';
 
 import './AppRouter.css';
 
@@ -19,9 +20,15 @@ function AppRouter() {
     <Router>
       <div>
         <div className="header">
-          <img src='/src/logo.svg' alt="Logo UTEM" />
+          <img src="/src/logo.svg" alt="Logo UTEM" />
           <div className="vertical-line"></div>
-          <h1>Portafolio Académico</h1>
+            <Link
+              className={`title ${selectedLink === '/nombre' && 'selected'}`}
+              to="/nombre"
+              onClick={() => handleLinkClick('/nombre')}
+            >
+              Portafolio Académico
+            </Link>
         </div>
         <nav>
           <ul>
@@ -61,6 +68,7 @@ function AppRouter() {
           <Route path="/unidad-academica" element={<UnidadAcademica />} />
           <Route path="/proyectos-investigacion" element={<ProyectosInvestigacion />} />
           <Route path="/profes/:id" element={<ProfesorDetalle />} />
+          <Route path="/profes/edit/:id" element={<EditarProfesor />} />
         </Routes>
       </div>
     </Router>

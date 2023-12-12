@@ -1,0 +1,78 @@
+body {
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    width: 500px; /* Ajusta el ancho según tus necesidades */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 16px;
+  }
+  
+  label {
+    color: #2c8768;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .formulario-editar input{
+    border-style: none;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+  
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .input li {
+    border-style: none;
+    list-style-type: none;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  button {
+    width: 100%;
+    background-color: #dcdcdc;
+    color: #000;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 16px;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background: linear-gradient(90deg, #298164, #2dc887) 0 0 no-repeat padding-box;
+    color: #fff
+  }
+  

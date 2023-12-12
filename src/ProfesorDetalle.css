@@ -27,6 +27,20 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    flex:1;
+}
+
+.edit-button{
+    float: right;
+}
+
+.edit-button button{
+  background: #d2e1ef;
+  border: none;
+  border-radius: 32px;
+  font-size: 90%;
+  cursor: pointer;
+  padding: 0.5em 1em 0.5em 1em;
 }
 
 .text .contacts{
@@ -63,8 +77,12 @@
     background: #d2e1ef;
     border: none;
     border-radius: 32px;
-    font-size: 80%;
+    font-size: 90%;
     cursor: pointer;
+}
+
+.buttons button:hover{
+  color: #fff;
 }
 
 .buttons button.seleccionado{
@@ -82,12 +100,31 @@
     margin-bottom: 1em;
 }
 
-.breve-cronologia{
-    list-style-type: '\1F393';
+.contenido-perfil-academico h2{
+    color: #2c8768;
+    font-size: 1.5em;
+    float: left;
 }
 
-.coordinacion{
-    list-style-type: '\1F310';
+.contenido-perfil-academico li{
+    background-color: #ebebeb;
+    border-radius: 8px;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+.contenido-informacion-personal h2{
+    color: #2c8768;
+    font-size: 1.5em;
+    float: left;
+}
+
+.contenido-publicaciones p {
+    color: #2c8768;
+    font-size: 1.5em;
+    float: left;
+    font-weight: bold;
+    margin-bottom: 0.5em;
 }
 
 h2{
@@ -109,10 +146,10 @@ table.Table {
     font-size: 1.2em;
   }
   table.Table tr:nth-child(even) {
-    background: #FFF1F1;
+    background: #e1ffe6;
   }
   table.Table thead {
-    background: #2c8768;
+    background: linear-gradient(90deg, #298164, #2dc887) 0 0 no-repeat padding-box;
   }
   table.Table thead th {
     font-size: 1.3em;

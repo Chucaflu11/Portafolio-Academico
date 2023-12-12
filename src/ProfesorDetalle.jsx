@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './ProfesorDetalle.css';
+import EditarProfesor from './EditarProfesor';
 
 function ProfesorDetalle() {
   const { id } = useParams();
@@ -29,27 +30,19 @@ function ProfesorDetalle() {
 
   const PerfilAcademico = () => (
     <div className="contenido-perfil-academico">
-      <h2>Breve Cronología Académica</h2>
+      <h2>Grados académicos</h2>
       {profesor.grados && (
-        <ul className='breve-cronologia'>
+        <ul className='grados-academicos'>
           {profesor.grados.map((grado, index) => (
-            <li key={index}>{grado.nombre_grado}</li>
+            <li key={index}>📖{grado.nombre_grado}</li>
           ))}
         </ul>
       )}
-      <h2>Docencia</h2>
+      <h2>Asignaturas dictadas</h2>
       {profesor.asignaturas_actuales && (
-        <ul className='docencia'>
+        <ul className='asignaturas-dictadas'>
           {profesor.asignaturas_actuales.map((asignatura, index) => (
-            <li key={index}>{asignatura.nombre_asignatura}</li>
-          ))}
-        </ul>
-      )}
-      <h2>Coordinación</h2>
-      {profesor.coordinacion && (
-        <ul className='coordinacion'>
-          {profesor.coordinacion.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index}>🌐{asignatura.nombre_asignatura}</li>
           ))}
         </ul>
       )}
@@ -126,7 +119,7 @@ function ProfesorDetalle() {
       <div className="div">
         <div className='container'>
           <div className="resume">
-            <img src={`./../mocks/images/${profesor.imagen}`} alt={profesor.nombre_profesor} />
+            <img src={profesor.imagen} alt={profesor.nombre_profesor} />
             <div className="text">
               <h1 aria-label='name'>{profesor.nombre_profesor}</h1>
               <div className="contacts">
@@ -139,6 +132,14 @@ function ProfesorDetalle() {
                 <p aria-label='Facultad'>Facultad de {profesor.facultad}</p>
                 <p aria-label='Linea de investigación'>Linea de investigación: {profesor.linea_investigacion}</p>
               </div>
+            </div>
+            <div className="edit-button">
+              <button
+                className={botonSeleccionado === 'Editar' ? 'seleccionado' : ''}
+                onClick={() => handleButtonClick('Editar')}
+              >
+                🖋️
+              </button>
             </div>
           </div>
           <div className="buttons">
@@ -166,6 +167,7 @@ function ProfesorDetalle() {
         {botonSeleccionado === 'Perfil Académico' && <PerfilAcademico />}
         {botonSeleccionado === 'Información Personal' && <InformacionPersonal />}
         {botonSeleccionado === 'Publicaciones' && <Publicaciones />}
+        {botonSeleccionado === 'Editar' && <EditarProfesor />}
       </div>
     </section>
   );

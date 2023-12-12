@@ -114,16 +114,43 @@ function ProfesorDetalle() {
     </div>
   );
 
+  const blobToDataURL = (blob, callback) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      callback(reader.result);
+    };
+    reader.readAsDataURL(blob);
+  };
+
   return (
     <section className='main'>
       <div className="div">
         <div className='container'>
           <div className="resume">
-            <img src={profesor.imagen} alt={profesor.nombre_profesor} />
+            {profesor.imagen && (
+              <img
+                src={profesor.imagen}
+                alt={profesor.nombre_profesor}
+              />
+            )}
+            {profesor.imagen instanceof Blob && (
+              <img
+                src=""
+                alt={profesor.nombre_profesor}
+                onLoad={() => {
+                  blobToDataURL(profesor.imagen, (dataURL) => {
+                    setProfesor((prevProfesor) => ({
+                      ...prevProfesor,
+                      imagen: dataURL,
+                    }));
+                  });
+                }}
+              />
+            )}
             <div className="text">
               <h1 aria-label='name'>{profesor.nombre_profesor}</h1>
               <div className="contacts">
-                <p aria-label='anexo'>Anexo: {profesor.telefono}</p>
+                <p aria-label='anexo'>Teléfono: {profesor.telefono}</p>
                 <a href={`mailto:${profesor.correo}`} aria-label='email'>{profesor.correo}</a>
               </div>
               <div className="otros-detalles">

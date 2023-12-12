@@ -38,7 +38,13 @@ function ProfesoresList({ selectedUnit, selectedDepartment, searchLineaInvestiga
     setFilteredProfesores(filtered);
   }, [selectedUnit, selectedDepartment, searchLineaInvestigacion, profesores]);
 
-  // Resto del código para el manejo de letras, etc.
+  const blobToDataURL = (blob, callback) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      callback(reader.result);
+    };
+    reader.readAsDataURL(blob);
+  };
 
   return (
     <div>
@@ -52,8 +58,26 @@ function ProfesoresList({ selectedUnit, selectedDepartment, searchLineaInvestiga
       <div className="profesores-list">
         {filteredProfesores.map((profesor) => (
           <div key={profesor.id_profesor} className="profesor-card">
-            {/* Ajustar la ruta de la imagen según la estructura de tu servidor */}
-            <img src={profesor.imagen} alt={profesor.nombre_profesor} />
+            {profesor.imagen && (
+              <img
+                src={profesor.imagen}
+                alt={profesor.nombre_profesor}
+              />
+            )}
+            {profesor.imagen instanceof Blob && (
+              <img
+                src=""
+                alt={profesor.nombre_profesor}
+                onLoad={() => {
+                  blobToDataURL(profesor.imagen, (dataURL) => {
+                    setProfesor((prevProfesor) => ({
+                      ...prevProfesor,
+                      imagen: dataURL,
+                    }));
+                  });
+                }}
+              />
+            )}
             <div className='data-profile'>
               <Link to={`/profes/${profesor.id_profesor}`}>
                 {profesor.nombre_profesor}

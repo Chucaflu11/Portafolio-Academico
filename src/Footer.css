@@ -21,9 +21,18 @@
     display: flex;
     gap: 1em;
     width: 80%;
+    align-items: center;
+    justify-content: center;
 }
 .footer .text{
+    align-items: center;
+    justify-content: center;
     width: 80%;
+}
+
+.footer .text p{
+    text-align: center;
+
 }
 
 .icono{

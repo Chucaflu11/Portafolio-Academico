@@ -26,13 +26,21 @@ connection.connect((err) => {
 // Ruta para obtener la lista de profesores con datos asociados
 app.get('/api/profesores', (req, res) => {
   const sql =
-    'SELECT Profesor.*, Proyectos.*, Publicaciones.*, Grados.nombre_grado, Titulos.nombre_titulo, Asignaturas_actuales.nombre_asignatura ' +
+    'SELECT DISTINCT Profesor.id_profesor, Profesor.nombre_profesor, Profesor.cargo_actual, Profesor.correo, Profesor.telefono, ' +
+    'Profesor.linea_investigacion, Profesor.departamento, Profesor.facultad, Profesor.imagen, Profesor.categoria, ' +
+    'Proyectos.id_proyecto, Proyectos.nombre_proyecto, Proyectos.desc_proyecto, Proyectos.tipo, ' +
+    'Publicaciones.id_publicacion, Publicaciones.titulo_publicacion, Publicaciones.Fecha_publicacion, ' +
+    'Publicaciones.Revista_publicacion, Publicaciones.DOI, Publicaciones.Autores, ' +
+    'Grados.nombre_grado, ' +
+    'Titulos.nombre_titulo, ' +
+    'Asignaturas_actuales.nombre_asignatura ' +
     'FROM Profesor ' +
     'LEFT JOIN Proyectos ON Profesor.id_profesor = Proyectos.id_profesor ' +
     'LEFT JOIN Publicaciones ON Profesor.id_profesor = Publicaciones.id_profesor ' +
     'LEFT JOIN Grados ON Profesor.id_profesor = Grados.id_profesor ' +
     'LEFT JOIN Titulos ON Profesor.id_profesor = Titulos.id_profesor ' +
     'LEFT JOIN Asignaturas_actuales ON Profesor.id_profesor = Asignaturas_actuales.id_profesor';
+
 
   connection.query(sql, (err, results) => {
     if (err) {
@@ -41,14 +49,12 @@ app.get('/api/profesores', (req, res) => {
       return;
     }
 
-    const profesores = [];
+    const profesores = {};
 
     // Organizar los resultados en una estructura de profesores
     results.forEach((row) => {
-      const existingProfesor = profesores.find((p) => p.id_profesor === row.id_profesor);
-
-      if (!existingProfesor) {
-        const profesor = {
+      if (!profesores[row.id_profesor]) {
+        profesores[row.id_profesor] = {
           id_profesor: row.id_profesor,
           nombre_profesor: row.nombre_profesor,
           cargo_actual: row.cargo_actual,
@@ -65,15 +71,11 @@ app.get('/api/profesores', (req, res) => {
           titulos: [],
           asignaturas_actuales: [],
         };
-
-        profesores.push(profesor);
       }
 
-      const currentProfesor = profesores.find((p) => p.id_profesor === row.id_profesor);
-
       // Añadir datos asociados
-      if (row.id_proyecto) {
-        currentProfesor.proyectos.push({
+      if (row.id_proyecto && !profesores[row.id_profesor].proyectos.find(p => p.id_proyecto === row.id_proyecto)) {
+        profesores[row.id_profesor].proyectos.push({
           id_proyecto: row.id_proyecto,
           nombre_proyecto: row.nombre_proyecto,
           desc_proyecto: row.desc_proyecto,
@@ -81,8 +83,8 @@ app.get('/api/profesores', (req, res) => {
         });
       }
 
-      if (row.id_publicacion) {
-        currentProfesor.publicaciones.push({
+      if (row.id_publicacion && !profesores[row.id_profesor].publicaciones.find(p => p.id_publicacion === row.id_publicacion)) {
+        profesores[row.id_profesor].publicaciones.push({
           id_publicacion: row.id_publicacion,
           titulo_publicacion: row.titulo_publicacion,
           Fecha_publicacion: row.Fecha_publicacion,
@@ -92,20 +94,20 @@ app.get('/api/profesores', (req, res) => {
         });
       }
 
-      if (row.nombre_grado) {
-        currentProfesor.grados.push({ nombre_grado: row.nombre_grado });
+      if (row.nombre_grado && !profesores[row.id_profesor].grados.find(g => g.nombre_grado === row.nombre_grado)) {
+        profesores[row.id_profesor].grados.push({ nombre_grado: row.nombre_grado });
       }
 
-      if (row.nombre_titulo) {
-        currentProfesor.titulos.push({ nombre_titulo: row.nombre_titulo });
+      if (row.nombre_titulo && !profesores[row.id_profesor].titulos.find(t => t.nombre_titulo === row.nombre_titulo)) {
+        profesores[row.id_profesor].titulos.push({ nombre_titulo: row.nombre_titulo });
       }
 
-      if (row.nombre_asignatura) {
-        currentProfesor.asignaturas_actuales.push({ nombre_asignatura: row.nombre_asignatura });
+      if (row.nombre_asignatura && !profesores[row.id_profesor].asignaturas_actuales.find(a => a.nombre_asignatura === row.nombre_asignatura)) {
+        profesores[row.id_profesor].asignaturas_actuales.push({ nombre_asignatura: row.nombre_asignatura });
       }
     });
 
-    res.json(profesores);
+    res.json(Object.values(profesores)); // Convertir el objeto a un array antes de enviar la respuesta
   });
 });
 
@@ -165,9 +167,10 @@ app.get('/api/profesores/:id', (req, res) => {
       asignaturas_actuales: [],
     };
 
-    // Añadir datos asociados
+    // Organizar los resultados en una estructura de profesor
     results.forEach((row) => {
-      if (row.id_proyecto) {
+      // Añadir datos asociados sin repetir
+      if (row.id_proyecto && !profesor.proyectos.find(p => p.id_proyecto === row.id_proyecto)) {
         profesor.proyectos.push({
           id_proyecto: row.id_proyecto,
           nombre_proyecto: row.nombre_proyecto,
@@ -176,7 +179,7 @@ app.get('/api/profesores/:id', (req, res) => {
         });
       }
 
-      if (row.id_publicacion) {
+      if (row.id_publicacion && !profesor.publicaciones.find(p => p.id_publicacion === row.id_publicacion)) {
         profesor.publicaciones.push({
           id_publicacion: row.id_publicacion,
           titulo_publicacion: row.titulo_publicacion,
@@ -187,15 +190,15 @@ app.get('/api/profesores/:id', (req, res) => {
         });
       }
 
-      if (row.nombre_grado) {
+      if (row.nombre_grado && !profesor.grados.find(g => g.nombre_grado === row.nombre_grado)) {
         profesor.grados.push({ nombre_grado: row.nombre_grado });
       }
 
-      if (row.nombre_titulo) {
+      if (row.nombre_titulo && !profesor.titulos.find(t => t.nombre_titulo === row.nombre_titulo)) {
         profesor.titulos.push({ nombre_titulo: row.nombre_titulo });
       }
 
-      if (row.nombre_asignatura) {
+      if (row.nombre_asignatura && !profesor.asignaturas_actuales.find(a => a.nombre_asignatura === row.nombre_asignatura)) {
         profesor.asignaturas_actuales.push({ nombre_asignatura: row.nombre_asignatura });
       }
     });
